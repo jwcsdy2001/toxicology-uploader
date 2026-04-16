@@ -1,0 +1,11 @@
+services:
+  uploader:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # 掛載到你本機的 toxicology-vault/pendings/ 目錄
+      - ../toxicology-vault/pendings:/vault/pendings
+    environment:
+      - PENDINGS_DIR=/vault/pendings
+    restart: unless-stopped
